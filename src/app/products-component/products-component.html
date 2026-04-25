@@ -1,0 +1,65 @@
+<div class="shop-layout">
+  <!-- LEFT SIDE PRODUCTS -->
+  <div class="products-section">
+    <div class="products-header">
+      <h1>Our Trending Products {{ products.length }}</h1>
+      <p>Discover our latest collection with premium quality</p>
+    </div>
+
+    <div class="product-grid">
+      @for (item of products; track item.id; let idx = $index) {
+        <div class="product-card">
+          <img [src]="item.image" alt="product image" />
+
+          <h3>{{ item.name }}</h3>
+          <p class="price">₹{{ item.price }}</p>
+
+          @if (!getItem(item.id)) {
+            <button class="cart-btn" (click)="onAddToCart(idx)">Add To Cart</button>
+          }
+
+          @if (getItem(item.id)) {
+            <button class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE CART -->
+  @if (cart.items.length > 0) {
+    <div class="cart-side">
+      <h2>Your Cart 🛒</h2>
+
+      @for (item of cart.items; track item.id) {
+        <div class="cart-item">
+          <div class="cart-details">
+            <h4>{{ item.name }}</h4>
+
+            <p>₹{{ item.price }}</p>
+
+            <div class="cart-controls">
+              <button (click)="decreaseQuantity(item.id)">➖</button>
+
+              <span>{{ item.quantity }}</span>
+
+              <button (click)="increaseQuantity(item.id)">➕</button>
+            </div>
+          </div>
+
+          <div class="cart-price">
+            ₹{{ item.totalPrice }}
+
+            <button (click)="removeFromCart(item.id)">❌</button>
+          </div>
+        </div>
+      }
+
+      <div class="cart-total">
+        <h3>Total ₹{{ cart.totalAmount }}</h3>
+      </div>
+
+      <button class="checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+  }
+</div>

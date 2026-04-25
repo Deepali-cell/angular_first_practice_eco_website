@@ -1,0 +1,50 @@
+<!-- reactive forms -->
+<!-- <form [formGroup]="useForm" (ngSubmit)="onSubmit()"> -->
+<!-- <form (ngSubmit)="onSubmit()">
+  <label>Name</label>
+  <input type="text" [formControl]="name" /> -->
+
+<!-- <label>Name</label>
+  <input type="text" formControlName="name" />
+  <br /><br />
+
+  <label>Email</label>
+  <input type="email" formControlName="email" />
+
+  <br /><br />
+
+  <label>Password</label>
+  <input type="password" formControlName="password" /> -->
+
+<!-- <br /><br />
+
+  <button type="submit">Submit</button>
+</form> -->
+
+<!-- template driven forms -->
+<!-- <form #useForm="ngForm" (ngSubmit)="onSubmit(useForm)"> -->
+<form (ngSubmit)="onSubmit()">
+  <label>Name</label>
+  <input type="text" [(ngModel)]="user.name" name="name" />
+  <br /><br />
+
+  <label>Email</label>
+  <input type="email" [(ngModel)]="user.email" name="email" />
+
+  <br /><br />
+
+  <label>Password</label>
+  <input type="password" [(ngModel)]="user.password" name="password" />
+
+  <br /><br />
+
+  <button type="submit">Submit</button>
+</form>
+
+<select #selectedUser (change)="onChange(selectedUser.value)">
+  <option value="amit">Amit</option>
+  <option value="deepali">Deepali</option>
+  <option value="kanika">Kanika</option>
+</select>
+
+<app-practice-child-component [name]="userName"></app-practice-child-component>

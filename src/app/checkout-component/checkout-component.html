@@ -1,0 +1,84 @@
+<div class="checkout-container">
+  @if (currentCartId) {
+    <h2 class="title">🧾 Current Cart</h2>
+    <div class="cart-card">
+      <div class="cart-info">
+        <p><b>Cart Id:</b> {{ setCurrentCartDetail?.cartId }}</p>
+        <p><b>Total Amount:</b> ₹{{ setCurrentCartDetail?.totalAmount }}</p>
+        <p><b>Items:</b> {{ setCurrentCartDetail?.items?.length }}</p>
+      </div>
+
+      <h3>Items</h3>
+
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (item of setCurrentCartDetail?.items; track $index) {
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>₹{{ item.price }}</td>
+              <td>{{ item.quantity }}</td>
+              <td class="total">₹{{ item.totalPrice }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <button class="history-btn" (click)="showCartHistory()">
+      📜 {{ showHistory ? 'Hide Cart History' : 'Show Cart History' }}
+    </button>
+  }
+
+  <hr />
+
+  @if (showHistory) {
+    <h2>🕘 Cart History</h2>
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Cart Id</th>
+          <th>Date</th>
+          <th>Total Items</th>
+          <th>Total Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (cart of setCartHistory; track cart.cartId) {
+          <tr [ngClass]="{ 'active-cart': cart.cartId === currentCartId }">
+            <td>#{{ cart.cartId }}</td>
+
+            <td>
+              {{ cart.createdAt | date: 'medium' }}
+            </td>
+
+            <td>
+              {{ cart.items.length }}
+            </td>
+
+            <td class="price">₹{{ cart.totalAmount }}</td>
+
+            <td>
+              <button
+                class="view-btn"
+                (click)="navigateToCart(cart.cartId)"
+                [disabled]="cart.cartId === currentCartId"
+              >
+                View
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>

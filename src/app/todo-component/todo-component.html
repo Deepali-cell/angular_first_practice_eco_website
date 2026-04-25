@@ -1,0 +1,60 @@
+<button class="open-btn" (click)="togglePlannerForm()">+ Create Planner</button>
+
+<div class="planner-layout">
+  <!-- LEFT SIDE FORM -->
+  @if (isShown) {
+    <div class="planner-container">
+      <h2>Create Shopping Planner</h2>
+
+      <form class="planner-form" (submit)="submitPlan()">
+        <div class="form-group">
+          <label>Goal / Setup Name</label>
+          <input type="text" [(ngModel)]="goal" name="goal" placeholder="Example: Coding Setup" />
+        </div>
+
+        <div class="form-group">
+          <label>Budget (₹)</label>
+          <input type="number" [(ngModel)]="budget" name="budget" placeholder="Enter your budget" />
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select [(ngModel)]="category" name="category">
+            <option value="">Select Category</option>
+            <option value="tech">Tech Setup</option>
+            <option value="gaming">Gaming Setup</option>
+            <option value="fitness">Fitness Setup</option>
+            <option value="gift">Gift Setup</option>
+            <option value="daily">Daily Need</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Deadline</label>
+          <input type="date" [(ngModel)]="deadline" name="deadline" />
+        </div>
+
+        <button class="create-btn" type="submit">{{ isEdit ? 'Edit Plan' : 'Add Plan' }}</button>
+      </form>
+    </div>
+  }
+
+  <!-- RIGHT SIDE PLANNER LIST -->
+  <div class="planner-list">
+    <h2>Your Planners</h2>
+    @if (plans.length > 0) {
+      @for (item of plans; track $index; let i = $index) {
+        <div class="planner-card">
+          <h3>{{ item.goal }}</h3>
+          <p>Budget: ₹{{ item.budget }}</p>
+          <p>Deadline: {{ item.deadline }}</p>
+
+          <div class="card-actions">
+            <button (click)="editPlan(item.id)">Edit</button>
+            <button (click)="deletePlan(item.id)">Delete</button>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

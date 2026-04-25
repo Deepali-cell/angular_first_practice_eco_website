@@ -1,0 +1,13 @@
+.nav-link {
+  color: white;
+}
+
+.active_link {
+  color: red !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.cartBtn a {
+  text-decoration: none;
+  color: black;
+}
