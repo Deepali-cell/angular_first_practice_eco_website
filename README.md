@@ -1,59 +1,44 @@
-# MyApp2
+ Angular E-commerce Practice App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+This was my first Angular project where I focused on learning the core concepts by building a simple e-commerce flow.
 
-## Development server
+The app allows users to view products, add items to cart, and track basic order history using localStorage.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular
+- TypeScript
+- LocalStorage (for data persistence)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+ Features
 
-```bash
-ng generate component component-name
-```
+- View product list  
+- Add/remove items from cart  
+- Maintain cart state  
+- Basic order history (stored locally)  
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+ What I Practiced
 
-## Building
+- Angular components  
+- Two-way data binding  
+- Basic state handling  
+- Component communication  
+- Working with localStorage  
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+Project Purpose
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This project was built to get hands-on experience with Angular basics and understand how frontend state works without a backend.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Note
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This is a frontend-only practice project. No backend or database is used — all data is stored in localStorage.
